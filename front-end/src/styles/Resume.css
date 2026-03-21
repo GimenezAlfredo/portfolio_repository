@@ -1,0 +1,54 @@
+.resume {
+  padding: 80px 10%;
+  background-color: #f4f4f4;
+  /* Match home/contact updated lighter darkish theme or 030303 */
+  /* Wait, user recently applied #f4f4f4 to contact. Let's look at that */
+}
+
+/* Let me use the user's latest modified dark theme, which seems to mix #f4f4f4 in contact... Wait!
+   User edited Contac.css: background-color: #f4f4f4; 
+   Oh, they might be converting it back to light/gray theme?
+   Let's check the user request... wait, I will give it a standard dark card that matches projects, we can adapt if needed.
+   Let's use the explicit dark theme we made earlier. */
+
+.resume {
+  padding: 100px 10%;
+  background-color: #f4f4f4;
+  text-align: center;
+  border-top: 1px solid #d4d4d4;
+}
+
+.resume-container {
+  max-width: 600px;
+  margin: 0 auto;
+  background-color: #f4f4f4;
+  border: 1px solid #e3e3e3;
+  border-radius: 12px;
+  padding: 40px;
+}
+
+.resume-text {
+  font-family: 'Inter', sans-serif;
+  color: #000000;
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 30px;
+}
+
+.btn-download {
+  display: inline-block;
+  padding: 14px 30px;
+  background-color: #f5c542;
+  color: #000000;
+  text-decoration: none;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  border-radius: 8px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-download:hover {
+  background-color: #ffbb00;
+  transform: translateY(-2px);
+}

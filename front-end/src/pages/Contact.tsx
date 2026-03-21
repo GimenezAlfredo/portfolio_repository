@@ -1,23 +1,83 @@
+import React, { useRef, useState } from 'react';
+import emailjs from '@emailjs/browser';
+import '../styles/Contac.css';
+
 const Contact = () => {
+  const form = useRef<HTMLFormElement>(null);
+  const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
+
+  const sendEmail = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    if (!form.current) return;
+
+    setStatus("sending");
+
+    // TODO: Reemplaza estos valores por los tuyos de EmailJS
+    const SERVICE_ID = "service_k9c61jv";
+    const TEMPLATE_ID = "template_2usjuei";
+    const PUBLIC_KEY = "vZLwOXWzNk4KI0Guu";
+
+    emailjs
+      .sendForm(SERVICE_ID, TEMPLATE_ID, form.current, PUBLIC_KEY)
+      .then(
+        () => {
+          setStatus("success");
+          form.current?.reset();
+          setTimeout(() => setStatus("idle"), 5000); // Reset status after 5s
+        },
+        (error) => {
+          console.error("FAILED...", error.text);
+          setStatus("error");
+          setTimeout(() => setStatus("idle"), 5000);
+        }
+      );
+  };
+
   return (
-    <section className="contact">
-      <h2 className="section-title">Contacto</h2>
+    <section id="contact" className="contact">
+      <div className="contact-container">
+        <h2 className="section-title" style={{ marginBottom: "40px" }}>Contacto</h2>
 
-      <div className="contact-buttons">
-        <a
-          href="mailto:tucorreo@gmail.com"
-          className="btn"
-        >
-          Gmail
-        </a>
+        <form ref={form} onSubmit={sendEmail} className="contact-form">
+          <div className="form-group">
+            <label htmlFor="user_name">Nombre</label>
+            <input type="text" id="user_name" name="user_name" placeholder="Tu nombre" required />
+          </div>
 
-        <a
-          href="https://github.com/tuusuario"
-          target="_blank"
-          className="btn"
-        >
-          GitHub
-        </a>
+          <div className="form-group">
+            <label htmlFor="user_email">Email</label>
+            <input type="email" id="user_email" name="user_email" placeholder="tu@correo.com" required />
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="message">Mensaje</label>
+            <textarea id="message" name="message" placeholder="¿En qué te puedo ayudar?" rows={5} required />
+          </div>
+
+          <button type="submit" className="submit-btn" disabled={status === "sending"}>
+            {status === "sending" ? "Enviando..." : "Enviar Mensaje"}
+          </button>
+
+          {status === "success" && (
+            <p style={{ color: "#4caf50", textAlign: "center", marginTop: "10px", fontFamily: "Inter" }}>
+              Mensaje enviado correctamente.
+            </p>
+          )}
+          {status === "error" && (
+            <p style={{ color: "#f44336", textAlign: "center", marginTop: "10px", fontFamily: "Inter" }}>
+              Hubo un error al intentar enviar el mensaje. Inténtalo de nuevo.
+            </p>
+          )}
+        </form>
+
+        <div className="contact-socials">
+          <p>O encuéntrame en:</p>
+          <div className="social-links">
+            <a href="mailto:alfredogimenez431@gmail.com" className="social-btn">Gmail</a>
+            <a href="https://github.com/GimenezAlfredo" target="_blank" rel="noreferrer" className="social-btn">GitHub</a>
+          </div>
+        </div>
       </div>
     </section>
   );

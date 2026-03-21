@@ -1,0 +1,167 @@
+.about {
+    padding: 100px 10%;
+    background-color: #030303;
+    /* Match projects dark background */
+}
+
+.about-container {
+    display: flex;
+    flex-direction: row;
+    /* Uno del lado del otro */
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.about-card {
+    flex: 1;
+    background-color: #0a0a0ac8;
+    /* Match project card background */
+    border: 1px solid #222;
+    border-radius: 12px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+}
+
+.about-card-title {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.6rem;
+    margin-bottom: 25px;
+    color: #fffefe;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.about-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.about-list>li {
+    margin-bottom: 25px;
+}
+
+.about-list>li:last-child {
+    margin-bottom: 0;
+}
+
+.about-list h4 {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.1rem;
+    color: #f5c542;
+    /* Use yellow accent to replace the neon green for titles */
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.about-date {
+    display: block;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    color: #d3d3d3;
+    margin-bottom: 10px;
+}
+
+.about-list p {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #fffefe;
+    margin-bottom: 10px;
+}
+
+.sub-list {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+.sub-list>li {
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 8px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #fffefe;
+}
+
+.sub-list>li::before {
+    content: "•";
+    color: #f5c542;
+    /* Bullet color */
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-size: 1.2rem;
+    line-height: 1.2;
+}
+
+/* STACK SECTION DEBAJO */
+.about-stack-container {
+    background-color: #0a0a0ad0;
+    border: 1px solid #222;
+    border-radius: 12px;
+    padding: 30px;
+    text-align: center;
+}
+
+.about-stack-title {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.5rem;
+    color: #fffefe;
+    margin-bottom: 25px;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.stack-tags {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+}
+
+.stack-tags span {
+    background: transparent;
+    color: #fffefe;
+    border: 1px solid #333;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+.stack-tags span:hover {
+    border-color: #555;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+@media (max-width: 992px) {
+    .about-container {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 576px) {
+    .about {
+        padding: 80px 5%;
+    }
+
+    .about-card {
+        padding: 20px;
+    }
+
+    .about-card-title {
+        font-size: 1.4rem;
+    }
+
+    .about-list h4 {
+        font-size: 1rem;
+    }
+}

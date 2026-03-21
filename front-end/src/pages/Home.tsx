@@ -1,8 +1,9 @@
 import React from "react";
+import fotoPortfolio from "../assets/FotoPortfolio.png";
 
 const Home = () => {
   return (
-    <section className="home">
+    <section id="home" className="home">
       <div className="home-left">
         <p className="welcome">Hola y Bienvenido.</p>
         <h1>
@@ -17,7 +18,7 @@ const Home = () => {
       </div>
 
       <div className="home-right">
-        <div className="photo-placeholder">Foto Personal</div>
+        <img src={fotoPortfolio} alt="Alfredo Gimenez" className="portfolio-photo" />
       </div>
     </section>
   );
