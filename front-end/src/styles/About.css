@@ -1,22 +1,19 @@
 .about {
     padding: 100px 10%;
-    background-color: #030303;
-    /* Match projects dark background */
+    background-color: #fffefe;
 }
 
 .about-container {
     display: flex;
     flex-direction: row;
-    /* Uno del lado del otro */
     gap: 30px;
     margin-bottom: 40px;
 }
 
 .about-card {
     flex: 1;
-    background-color: #0a0a0ac8;
-    /* Match project card background */
-    border: 1px solid #222;
+    background-color: #1a1a1a;
+    border: 1px solid #333;
     border-radius: 12px;
     padding: 30px;
     display: flex;
@@ -101,8 +98,8 @@
 
 /* STACK SECTION DEBAJO */
 .about-stack-container {
-    background-color: #0a0a0ad0;
-    border: 1px solid #222;
+    background-color: #1a1a1a;
+    border: 1px solid #333;
     border-radius: 12px;
     padding: 30px;
     text-align: center;

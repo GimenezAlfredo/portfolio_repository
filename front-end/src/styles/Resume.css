@@ -13,23 +13,23 @@
 
 .resume {
   padding: 100px 10%;
-  background-color: #f4f4f4;
+  background-color: #fffefe;
   text-align: center;
-  border-top: 1px solid #d4d4d4;
+  border-top: 1px solid #ddd;
 }
 
 .resume-container {
   max-width: 600px;
   margin: 0 auto;
-  background-color: #f4f4f4;
-  border: 1px solid #e3e3e3;
+  background-color: #1a1a1a;
+  border: 1px solid #333;
   border-radius: 12px;
   padding: 40px;
 }
 
 .resume-text {
   font-family: 'Inter', sans-serif;
-  color: #000000;
+  color: #ccc;
   font-size: 1rem;
   line-height: 1.6;
   margin-bottom: 30px;

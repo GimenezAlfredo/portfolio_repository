@@ -44,9 +44,10 @@ const projectsData: Project[] = [
 type CarouselProps = {
   images: string[];
   title: string;
+  onImageClick: (image: string) => void;
 };
 
-const ProjectCarousel = ({ images, title }: CarouselProps) => {
+const ProjectCarousel = ({ images, title, onImageClick }: CarouselProps) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const goToPrev = () => {
@@ -82,6 +83,7 @@ const ProjectCarousel = ({ images, title }: CarouselProps) => {
             src={images[currentIndex]}
             alt={`${title} imagen ${currentIndex + 1}`}
             className="carousel-image"
+            onClick={() => onImageClick(images[currentIndex])}
           />
         </div>
       </div>
@@ -99,6 +101,8 @@ const ProjectCarousel = ({ images, title }: CarouselProps) => {
 };
 
 const Projects = () => {
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+
   return (
     <section className="projects-section" id="projects">
       <h2 className="projects-title">Proyectos</h2>
@@ -106,7 +110,7 @@ const Projects = () => {
       <div className="projects-grid">
         {projectsData.map((project, index) => (
           <article className="project-card" key={index}>
-            <ProjectCarousel images={project.images} title={project.title} />
+            <ProjectCarousel images={project.images} title={project.title} onImageClick={setSelectedImage} />
 
             <div className="project-content">
               <h3>{project.title}</h3>
@@ -123,6 +127,19 @@ const Projects = () => {
           </article>
         ))}
       </div>
+
+      {/* LIGHTBOX MODAL */}
+      {selectedImage && (
+        <div className="lightbox-overlay" onClick={() => setSelectedImage(null)}>
+          <button className="lightbox-close" onClick={() => setSelectedImage(null)}>✕</button>
+          <img
+            src={selectedImage}
+            alt="Proyecto ampliado"
+            className="lightbox-content"
+            onClick={(e) => e.stopPropagation()}
+          />
+        </div>
+      )}
     </section>
   );
 };

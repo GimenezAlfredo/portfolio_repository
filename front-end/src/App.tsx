@@ -2,7 +2,7 @@ import Home from "./pages/Home";
 import About from "./pages/AboutMe";
 import Projects from "./pages/Proyects";
 import Contact from "./pages/Contact";
-import Resume from "../public/Resume";
+import Resume from "./pages/Resume";
 import Navbar from "./components/Navbar";
 
 function App() {
