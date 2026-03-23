@@ -117,3 +117,13 @@
   border-color: #f5c542;
   color: #f5c542;
 }
+
+@media (max-width: 576px) {
+  .contact {
+    padding: 80px 5%;
+  }
+
+  .contact-container {
+    padding: 25px;
+  }
+}
