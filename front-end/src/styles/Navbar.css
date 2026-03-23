@@ -1,0 +1,76 @@
+html {
+  scroll-behavior: smooth;
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 20px 10%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgba(255, 254, 254, 0.95);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  z-index: 1000;
+  transition: all 0.3s ease;
+}
+
+.navbar-logo a {
+  font-family: 'Knewave', system-ui;
+  font-size: 24px;
+  color: #111;
+  text-decoration: none;
+  letter-spacing: 1px;
+}
+
+.navbar-logo a:hover {
+  color: #f5c542;
+}
+
+.navbar-links {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar-links li a {
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  text-decoration: none;
+  color: #444;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.navbar-links li a:hover {
+  color: #f5c542;
+}
+
+.btn-nav {
+  background: #f5c542;
+  color: #333;
+  padding: 10px 20px;
+  border-radius: 20px;
+  text-decoration: none;
+  font-family: 'Fugaz One', sans-serif;
+  font-size: 14px;
+  box-shadow: 0 4px 10px rgba(245, 197, 66, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-nav:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(245, 197, 66, 0.5);
+  background: #333;
+  color: #f5c542;
+}
+
+/* Adjust the top padding of sections to not be hidden behind the fixed navbar */
+section {
+  scroll-margin-top: 80px;
+}
