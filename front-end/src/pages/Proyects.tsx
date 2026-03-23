@@ -44,7 +44,7 @@ const projectsData: Project[] = [
 type CarouselProps = {
   images: string[];
   title: string;
-  onImageClick: (image: string) => void;
+  onImageClick: (images: string[], index: number) => void;
 };
 
 const ProjectCarousel = ({ images, title, onImageClick }: CarouselProps) => {
@@ -83,7 +83,7 @@ const ProjectCarousel = ({ images, title, onImageClick }: CarouselProps) => {
             src={images[currentIndex]}
             alt={`${title} imagen ${currentIndex + 1}`}
             className="carousel-image"
-            onClick={() => onImageClick(images[currentIndex])}
+            onClick={() => onImageClick(images, currentIndex)}
           />
         </div>
       </div>
@@ -101,7 +101,25 @@ const ProjectCarousel = ({ images, title, onImageClick }: CarouselProps) => {
 };
 
 const Projects = () => {
-  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [lightboxData, setLightboxData] = useState<{ images: string[], currentIndex: number } | null>(null);
+
+  const goToPrevLightbox = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (!lightboxData) return;
+    setLightboxData({
+      ...lightboxData,
+      currentIndex: lightboxData.currentIndex === 0 ? lightboxData.images.length - 1 : lightboxData.currentIndex - 1
+    });
+  };
+
+  const goToNextLightbox = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (!lightboxData) return;
+    setLightboxData({
+      ...lightboxData,
+      currentIndex: lightboxData.currentIndex === lightboxData.images.length - 1 ? 0 : lightboxData.currentIndex + 1
+    });
+  };
 
   return (
     <section className="projects-section" id="projects">
@@ -110,7 +128,7 @@ const Projects = () => {
       <div className="projects-grid">
         {projectsData.map((project, index) => (
           <article className="project-card" key={index}>
-            <ProjectCarousel images={project.images} title={project.title} onImageClick={setSelectedImage} />
+            <ProjectCarousel images={project.images} title={project.title} onImageClick={(imgs, idx) => setLightboxData({ images: imgs, currentIndex: idx })} />
 
             <div className="project-content">
               <h3>{project.title}</h3>
@@ -129,15 +147,20 @@ const Projects = () => {
       </div>
 
       {/* LIGHTBOX MODAL */}
-      {selectedImage && (
-        <div className="lightbox-overlay" onClick={() => setSelectedImage(null)}>
-          <button className="lightbox-close" onClick={() => setSelectedImage(null)}>✕</button>
+      {lightboxData && (
+        <div className="lightbox-overlay" onClick={() => setLightboxData(null)}>
+          <button className="lightbox-close" onClick={() => setLightboxData(null)}>✕</button>
+
+          <button className="lightbox-nav prev" onClick={goToPrevLightbox} aria-label="Anterior en Lightbox">❮</button>
+
           <img
-            src={selectedImage}
-            alt="Proyecto ampliado"
+            src={lightboxData.images[lightboxData.currentIndex]}
+            alt={`Proyecto ampliado ${lightboxData.currentIndex + 1}`}
             className="lightbox-content"
             onClick={(e) => e.stopPropagation()}
           />
+
+          <button className="lightbox-nav next" onClick={goToNextLightbox} aria-label="Siguiente en Lightbox">❯</button>
         </div>
       )}
     </section>

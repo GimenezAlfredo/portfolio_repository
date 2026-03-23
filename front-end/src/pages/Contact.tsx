@@ -13,10 +13,17 @@ const Contact = () => {
 
     setStatus("sending");
 
-    // TODO: Reemplaza estos valores por los tuyos de EmailJS
-    const SERVICE_ID = "service_k9c61jv";
-    const TEMPLATE_ID = "template_2usjuei";
-    const PUBLIC_KEY = "vZLwOXWzNk4KI0Guu";
+    // Variables de Entorno de Vite (aseguradas)
+    const SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+    const TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+    const PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
+    if (!SERVICE_ID || !TEMPLATE_ID || !PUBLIC_KEY) {
+      console.error("Faltan variables de entorno para EmailJS");
+      setStatus("error");
+      setTimeout(() => setStatus("idle"), 5000);
+      return;
+    }
 
     emailjs
       .sendForm(SERVICE_ID, TEMPLATE_ID, form.current, PUBLIC_KEY)
