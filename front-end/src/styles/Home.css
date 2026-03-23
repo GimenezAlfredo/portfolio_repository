@@ -123,3 +123,47 @@ h1 {
     transform: translateY(0);
   }
 }
+
+/* Responsive Mobile Rules */
+@media (max-width: 992px) {
+  .home {
+    flex-direction: column-reverse;
+    /* Foto arriba, texto abajo o viceversa. Haremos clásico column (texto arriba) */
+    flex-direction: column;
+    text-align: center;
+    padding: 120px 5% 60px;
+    gap: 50px;
+  }
+
+  .home-right .portfolio-photo {
+    width: 300px;
+    height: 300px;
+  }
+
+  h1 {
+    font-size: 44px;
+  }
+
+  .highlight {
+    margin: 5px 0;
+  }
+}
+
+@media (max-width: 576px) {
+  .home-right .portfolio-photo {
+    width: 260px;
+    height: 260px;
+  }
+
+  h1 {
+    font-size: 36px;
+  }
+
+  .welcome {
+    font-size: 16px;
+  }
+
+  .description {
+    font-size: 16px;
+  }
+}

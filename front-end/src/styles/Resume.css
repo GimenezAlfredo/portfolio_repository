@@ -52,3 +52,13 @@
   background-color: #ffbb00;
   transform: translateY(-2px);
 }
+
+@media (max-width: 576px) {
+  .resume {
+    padding: 80px 5%;
+  }
+
+  .resume-container {
+    padding: 25px;
+  }
+}
